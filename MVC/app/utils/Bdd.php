@@ -1,21 +1,33 @@
 <?php
 abstract class Bdd
 {
- protected $co = null;
+    protected ?PDO $co = null;
 
- protected function __construct()
- {
-  if ($this->co == null) {
-   $this->connect();
-  }
- }
+    public function __construct()
+    {
+        $this->connect();
+    }
 
- private function connect(): void
- {
-  $this->co = new PDO(
-   'mysql:host=' . $_ENV['db_host'] . ';dbname=' . $_ENV['db_name'],
-   $_ENV['db_user'],
-   $_ENV['db_pwd']
-  );
- }
+    public function connect(): void
+    {
+        if ($this->co === null) {
+            $this->co = new PDO(
+                'mysql:host=127.0.0.1;port=8889;dbname=parc_activite',
+                'root',
+                'root',
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                ]
+            );
+        }
+    }
+
+    protected function getCo(): PDO
+    {
+        if ($this->co === null) {
+            $this->connect();
+        }
+        return $this->co;
+    }
 }
