@@ -5,6 +5,10 @@ Une petite application de gestion d'un parc d'activités : les visiteurs consult
 
 Le tout est écrit **en PHP pur, sans framework** : le routeur, l'autoload, la couche d'accès aux données et le rendu des vues sont faits maison.
 
+## Contexte et contribution
+
+Projet académique réalisé à l'IIM (A2 CDI). Le squelette du routeur et la trame du cours viennent du support de [@yoanncoualan](https://github.com/yoanncoualan) ; j'ai ensuite écrit l'application elle-même : les entités, les modèles PDO, les trois contrôleurs, l'autoload, le trait de rendu et l'ensemble des vues.
+
 ## Fonctionnalités
 
 - Liste et détail des activités (nom, type, description, date, durée, places disponibles)
